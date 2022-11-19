@@ -1,0 +1,88 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title Talking Numbers
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="format-detection", content="telephone=no")
+        link(rel="stylesheet", href="style.sass")
+    body
+        audio(style="display: hidden")#audio
+        section.language-selector
+            span
+                a(href="#en") ENG
+            span.spacer |
+            span
+                a(href="#de") DEU
+            span.spacer |
+            span
+                a(href="#ru") РУС
+            span.spacer |
+            span
+                a(href="#ro") RON
+
+        h1 Talking Numbers
+
+        section.container
+            div.playback
+                input(type="button").play.img-background#playback
+                input(type="button").skip.img-background#skip
+            div.input
+                label(for="input", data-dict="input.number.placeholder")#label
+                input(type="tel").img-background#input
+
+        section.settings
+            div.range
+                label(for="range", data-dict="setting.range.title")
+                input(type="range", min="0", max="3", value="1")#range
+                div.range-label
+                    label 10
+                    label 100
+                    label 1000
+                    label 1000000
+            div.voice
+                label(for="voice" data-dict="setting.voice.title")
+                select(name="voice")#voice
+                    option(value="en-US" data-dict="setting.voice.language.english")
+                    option(value="de-DE" data-dict="setting.voice.language.german")
+                    option(value="ru-RU" data-dict="setting.voice.language.russian")
+                    option(value="ro-RO" data-dict="setting.voice.language.romanian")
+
+        section.stats
+            p
+            div.row
+                span(data-dict="stats.solved.total")
+                span(data-stats="solved.total")
+            div.row.indented
+                span(data-dict="stats.solved.10")
+                span(data-stats="solved.10")
+            div.row.indented
+                span(data-dict="stats.solved.100")
+                span(data-stats="solved.100")
+            div.row.indented
+                span(data-dict="stats.solved.1000")
+                span(data-stats="solved.1000")
+            div.row.indented
+                span(data-dict="stats.solved.1000000")
+                span(data-stats="solved.1000000")
+            div.row
+                span(data-dict="stats.solved.streak")
+                span(data-stats="solved.streak")
+            div.row
+                span(data-dict="stats.solved.highest")
+                span(data-stats="solved.highest")
+            div.row
+                span(data-dict="stats.solved.quickest")
+                span(data-stats="solved.quickest")
+
+        section.credits
+            p
+                | Created with
+                |
+                span#heart ❤️
+                |
+                | and hope for ✌️
+            a(href="https://github.com/zahlex") github.com/zahlex
+
+        script(type="module", src="script/main.ts")
+        script(type="module", src="script/language.ts")
