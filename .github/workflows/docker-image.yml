@@ -8,6 +8,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -21,10 +23,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Declare commit hash variable
+        name: Get commit hash
         id: hash
         shell: bash
-        run: echo "::set-output name=short::$(git rev-parse --short HEAD)"
+        run: echo "GIT_HASH=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
       -
         name: Build and push
         uses: docker/build-push-action@v4
@@ -32,4 +34,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: zahlex/talking-numbers:latest,zahlex/talking-numbers:${{ steps.hash.outputs.short }}
+          tags: zahlex/talking-numbers:latest,zahlex/talking-numbers:${{ env.GIT_HASH }}
