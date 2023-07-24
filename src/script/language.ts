@@ -107,7 +107,7 @@ const dictionary: dictionary = {
         german: "Insgesamt gelöst :",
         russian: "Всего решено :",
         romanian: "Total rezolvat :",
-        turkish: "Toplam çözüldü :",
+        turkish: "Toplam çözülen :",
     },
     "stats.solved.10": {
         english: "up to 10 :",
