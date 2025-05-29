@@ -6,10 +6,8 @@ Randomly generated numbers in a specifiable range are pronounced in a selectable
 
 ## Installation
 
-The latest version of this project is also available on [Docker Hub](https://hub.docker.com/repository/docker/zahlex/talking-numbers).
-It can be run using the following command:
-
 ```
+docker build -t zahlex/talking-numbers:latest .
 docker run -p 8080:8080 -v <google-creditals-file>.json:/app/credentials.json zahlex/talking-numbers:latest
 ```
 
